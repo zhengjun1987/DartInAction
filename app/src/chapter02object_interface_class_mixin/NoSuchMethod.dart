@@ -1,4 +1,5 @@
-import 'Point.dart';
+library points;
+import '../chapter01intro/points.dart';
 
 const origin = Point.fi(0, 0);
 

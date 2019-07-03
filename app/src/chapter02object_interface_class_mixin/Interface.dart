@@ -1,5 +1,5 @@
+import '../chapter01intro/points.dart';
 import 'Abstract.dart';
-import 'Point.dart';
 
 abstract class CartesianPoint {
   get x;

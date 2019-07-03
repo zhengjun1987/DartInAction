@@ -1,4 +1,4 @@
-import 'Point.dart';
+import '../chapter01intro/points.dart';
 
 class Box {
   static var numberOfInstance = 0;

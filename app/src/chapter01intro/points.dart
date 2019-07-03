@@ -1,4 +1,8 @@
+library points;
+
 import 'dart:math';
+
+import '../chapter02object_interface_class_mixin/Interface.dart';
 
 class First {}
 
@@ -32,14 +36,38 @@ main() {
   print(distance.runtimeType);
 }
 
-class Point {
-  var x, y;
+class Point implements CartesianPoint, PolarPoint {
+  final rho, theta;
 
-  Point(this.x, this.y);
+  Point.polar(this.rho, this.theta);
 
-  scale(factor) => Point(x * factor, y * factor);
+  Point(a, b)
+      : this.polar(sqrt(a * a + b * b),atan(a/b));
 
-  operator +(p) => Point(this.x + p.x, this.y + p.y);
+  const Point.fi(this.rho,this.theta);
+
+  get x => rho * cos(theta);
+
+//  set x(newX) {
+//    rho = sqrt(newX * newX + y * y);
+//    theta = acos(newX / rho);
+//  }
+
+  get y => rho * sin(theta);
+
+//  set y(newY) {
+//    rho = sqrt(x * x + newY * newY);
+//    theta = asin(newY / rho);
+//  }
+
+  scale(factor) => Point(rho * factor, theta);
+
+  operator +(p) => Point(x + p.x, y + p.y);
+
+  operator ==(p) {
+    print("x = $x, p.x = ${p.x}  y = $y, p.y = ${p.y}");
+    return x == p.x && y == p.y;
+  }
 
   static distance(x, y) {
     var dx = x.x - y.x;

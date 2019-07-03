@@ -1,4 +1,4 @@
-import 'Point.dart';
+import '../chapter01intro/points.dart';
 
 class Point3D extends Point {
   var z;
